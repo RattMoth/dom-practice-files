@@ -4,6 +4,7 @@
 
 li {
   cursor: pointer;
+  -webkit-user-select: none;
 }
 
 .delete {
