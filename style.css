@@ -10,16 +10,17 @@ body {
 }
 
 ul {
-  list-style-position: inside;
+  list-style: none;
 }
 
 li {
   cursor: pointer;
   -webkit-user-select: none;
+  margin: 1rem;
 }
 
 .delete {
-  margin-left: 1rem;
+  margin-left: 3rem;
 }
 
 .erase {
