@@ -1,6 +1,6 @@
 // Cache selectors to improve performance
 const enterButton = document.getElementById('enter');
-const deleteButton = document.getElementById('delete');
+const deleteButton = document.querySelectorAll('.delete');
 const input = document.getElementById('userInput');
 const ul = document.querySelector('ul');
 const listElement = document.querySelectorAll('li');
@@ -14,13 +14,27 @@ function markDone() {
   this.classList.toggle('done');
 }
 
+function removeElement() {
+  console.log('it works');
+  // this.parentNode.removeChild(this);
+  this.parentNode.classList.add('erase');
+}
+
 // Adds event listener to all preexisting li elements
 for (let i = 0; i < listElement.length; i++) {
   listElement[i].addEventListener('click', markDone);
 }
 
-function removeElement() {
-  this.classList.add('delete');
+for (let i = 0; i < listElement.length; i++) {
+  const btn = document.createElement('button');
+  btn.appendChild(document.createTextNode('Delete'));
+  btn.setAttribute('class', 'delete');
+  btn.addEventListener('click', removeElement);
+  listElement[i].appendChild(btn);
+}
+
+for (let i = 0; i < deleteButton.length; i++) {
+  deleteButton[i].addEventListener('click', removeElement);
 }
 
 function addToList() {
@@ -28,6 +42,7 @@ function addToList() {
   const btn = document.createElement('button');
   li.appendChild(document.createTextNode(input.value));
   btn.appendChild(document.createTextNode('Delete'));
+  btn.setAttribute('class', 'delete');
   li.addEventListener('click', markDone);
   btn.addEventListener('click', removeElement);
   ul.appendChild(li).appendChild(btn);
@@ -51,4 +66,4 @@ enterButton.addEventListener('click', addElementAfterClick);
 
 input.addEventListener('keypress', addElementAfterEnter);
 
-deleteButton.addEventListener('click', removeElement);
+// deleteButton.addEventListener('click', removeElement);
