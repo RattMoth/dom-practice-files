@@ -10,10 +10,14 @@ body {
 }
 
 ul {
+  display: inline-block;
   list-style: none;
+  text-align: left;
 }
 
 li {
+  display: flex;
+  justify-content: space-between;
   cursor: pointer;
   -webkit-user-select: none;
   margin: 1rem;
@@ -34,7 +38,7 @@ button {
   padding: 0.25rem 1rem;
   margin: 0;
   text-decoration: none;
-  background: #0069ed;
+  background: #ed0033;
   color: #ffffff;
   font-family: sans-serif;
   font-size: 0.75rem;
@@ -57,4 +61,8 @@ button:focus {
 
 button:active {
   transform: scale(0.99);
+}
+
+#enter {
+  background: #0069ed;
 }
