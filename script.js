@@ -10,6 +10,7 @@ function checkInputLength() {
   return input.value.length;
 }
 
+// Cannot refactor as arrow function, as they do not allow for use of 'this'
 function markDone() {
   this.classList.toggle('done');
 }
