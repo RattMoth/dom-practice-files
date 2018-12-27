@@ -5,18 +5,14 @@ const input = document.getElementById('userInput');
 const ul = document.querySelector('ul');
 const listElement = document.querySelectorAll('li');
 
-// Declare all functions before they are called. Create new functions as needed to avoid repetition
-function checkInputLength() {
-  return input.value.length;
-}
+const checkInputLength = () => input.value.length;
 
 function markDone() {
   this.classList.toggle('done');
 }
 
 function removeElement() {
-  console.log('it works');
-  // this.parentNode.removeChild(this);
+  // console.log('it works');
   this.parentNode.classList.add('erase');
 }
 
@@ -25,6 +21,7 @@ for (let i = 0; i < listElement.length; i++) {
   listElement[i].addEventListener('click', markDone);
 }
 
+// Adds delete button to all preexisting li elements
 for (let i = 0; i < listElement.length; i++) {
   const btn = document.createElement('button');
   btn.appendChild(document.createTextNode('Delete'));
@@ -33,11 +30,7 @@ for (let i = 0; i < listElement.length; i++) {
   listElement[i].appendChild(btn);
 }
 
-for (let i = 0; i < deleteButton.length; i++) {
-  deleteButton[i].addEventListener('click', removeElement);
-}
-
-function addToList() {
+const addToList = () => {
   const li = document.createElement('li');
   const btn = document.createElement('button');
   li.appendChild(document.createTextNode(input.value));
@@ -47,23 +40,27 @@ function addToList() {
   btn.addEventListener('click', removeElement);
   ul.appendChild(li).appendChild(btn);
   input.value = '';
-}
+};
 
-function addElementAfterClick() {
+const addElementAfterClick = () => {
   if (checkInputLength() > 0) {
     addToList();
   }
-}
+};
 
-function addElementAfterEnter(event) {
+const addElementAfterEnter = (event) => {
   if (input.value.length > 0 && event.keyCode === 13) {
     addToList();
   }
-}
+};
 
 // User actions after everything else
 enterButton.addEventListener('click', addElementAfterClick);
 
 input.addEventListener('keypress', addElementAfterEnter);
 
-// deleteButton.addEventListener('click', removeElement);
+deleteButton.addEventListener('click', removeElement);
+
+// CHANGES
+// Cleaned up and added comments, removed unnecessary for loop to deleteButton event listener,
+// changed function declarations to ES6 arrows when possible (for functions not using 'this')
